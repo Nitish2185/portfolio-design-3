@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Anybody, Hanken_Grotesk } from "next/font/google";
 import { site } from "@/content/site";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { TransitionProvider } from "@/components/providers/TransitionProvider";
+import { Nav } from "@/components/layout/Nav";
 import { Crosshair } from "@/components/ui/Crosshair";
 import { GridLines } from "@/components/ui/GridLines";
 import { Loader } from "@/components/ui/Loader";
@@ -44,7 +46,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Loader />
         <GridLines />
         <Crosshair />
-        {children}
+        <TransitionProvider>
+          <Nav />
+          {children}
+        </TransitionProvider>
       </body>
     </html>
   );
