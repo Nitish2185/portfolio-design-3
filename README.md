@@ -1,6 +1,6 @@
 # Lorem Ipsum — Swiss Kinetic Portfolio
 
-A loud, animation-heavy personal portfolio in a **Swiss / kinetic-type** style: electric blue, white and black, stretchy variable-font typography, pixel tiles and a crosshair cursor. All text is **lorem ipsum placeholder**.
+A loud, animation-heavy personal portfolio in a **Swiss / kinetic-type** style: Swiss red, white and black with yellow highlights, stretchy variable-font typography, pixel tiles and a crosshair cursor. All text is **lorem ipsum placeholder**.
 
 **Stack:** Next.js 16 (App Router) · React 19 · Tailwind CSS 4 · GSAP (ScrollTrigger, SplitText, ScrambleText) · Motion · Lenis · Three.js
 
@@ -29,7 +29,7 @@ Almost everything you'll want to change is in **[`src/content/site.ts`](src/cont
 | Word-sphere skills | `skills` |
 | Testimonial cards | `testimonials` |
 | Résumé download | replace `public/resume.pdf` |
-| Colours and fonts | `src/app/globals.css` (`@theme`) and `src/app/layout.tsx` |
+| Colours and fonts | `src/app/globals.css` (`@theme`: change `--color-primary` to recolour the whole site) and `src/app/layout.tsx` |
 
 **Your photo:** the halftone block in `src/components/sections/Manifesto.tsx` is a placeholder. Put an image in `public/` and swap in a `next/image` `<Image>`.
 
@@ -49,7 +49,7 @@ Almost everything you'll want to change is in **[`src/content/site.ts`](src/cont
 | Hero | Your name built from thousands of square particles: they assemble, flee the cursor, burst on click, fold into a sphere on scroll; role text stretches toward the cursor | Three.js shaders + GSAP |
 | Manifesto | Lines slide in from alternating sides and stretch to fill the column exactly | GSAP ScrollTrigger |
 | Work | Pinned 3D carousel ring turned by scrolling; titles decode | CSS 3D + GSAP |
-| Services | Accordion rows sweep blue, titles stretch letter by letter, equalizer loops | Motion |
+| Services | Accordion rows sweep red, titles stretch letter by letter, equalizer loops | Motion |
 | Experience | Split-flap departures board; every character flips into place | GSAP |
 | Skills | 3D sphere of words: follows the mouse, drag and fling with inertia | GSAP ticker |
 | Testimonials | Swipeable card deck | Motion drag |
