@@ -1,0 +1,50 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 726 >>
+stream
+BT
+/F2 28 Tf 1 0 0 1 64 760 Tm (LOREM IPSUM) Tj
+/F1 13 Tf 1 0 0 1 64 720 Tm (Lorem ipsum dolor sit amet) Tj
+/F1 11 Tf 1 0 0 1 64 695 Tm () Tj
+/F2 13 Tf 1 0 0 1 64 672 Tm (Placeholder resume) Tj
+/F1 11 Tf 1 0 0 1 64 647 Tm (Replace public/resume.pdf with your own resume.) Tj
+/F1 11 Tf 1 0 0 1 64 624 Tm () Tj
+/F2 13 Tf 1 0 0 1 64 601 Tm (Experience) Tj
+/F1 11 Tf 1 0 0 1 64 576 Tm (2024 - Now    Lorem Ipsum Lead, Consectetur Studio) Tj
+/F1 11 Tf 1 0 0 1 64 553 Tm (2021 - 2024   Senior Dolor Sit, Adipiscing Labs) Tj
+/F1 11 Tf 1 0 0 1 64 530 Tm (2019 - 2021   Amet Developer, Elit & Partners) Tj
+/F1 11 Tf 1 0 0 1 64 507 Tm () Tj
+/F2 13 Tf 1 0 0 1 64 484 Tm (Contact) Tj
+/F1 11 Tf 1 0 0 1 64 459 Tm (hello@example.com) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000001027 00000 n 
+0000001097 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1172
+%%EOF
