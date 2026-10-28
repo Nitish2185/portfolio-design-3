@@ -5,6 +5,7 @@ import { gsap, prefersReducedMotion, useGSAP } from "@/lib/gsap";
 import { onIntroDone } from "@/lib/intro";
 import { site } from "@/content/site";
 import { ParticleName } from "@/components/three/ParticleName";
+import { ProximityText } from "@/components/ui/ProximityText";
 
 const NAME_LINES = [site.firstName.toUpperCase(), site.lastName.toUpperCase()];
 
@@ -33,22 +34,7 @@ export function Hero() {
         .to(q(".hero-fade-out"), { autoAlpha: 0, y: -40, ease: "power1.in", duration: 0.4 }, 0)
         .fromTo(q(".hero-sphere-label"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 0.6);
 
-      // Each letter of the role widens as the cursor gets close
-      const letters = q(".hero-letter");
-      const setters = letters.map((el) => gsap.quickTo(el, "--w", { duration: 0.5, ease: "power3" }));
-      const onMove = (e: PointerEvent) => {
-        letters.forEach((el, i) => {
-          const r = el.getBoundingClientRect();
-          const dist = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
-          setters[i](60 + 90 * Math.max(0, 1 - dist / 260));
-        });
-      };
-      if (!reduce) window.addEventListener("pointermove", onMove, { passive: true });
-
-      return () => {
-        unsubscribe();
-        window.removeEventListener("pointermove", onMove);
-      };
+      return () => unsubscribe();
     },
     { scope: root },
   );
@@ -84,20 +70,8 @@ export function Hero() {
         <p className="hero-sphere-label tag invisible self-center opacity-0">Keep scrolling ↓</p>
 
         <div className="hero-fade-out container-x flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <p
-            aria-label={site.role}
-            className="hero-in font-display text-[8.5vw] leading-[0.85] font-black uppercase md:max-w-[70%] md:text-[5.2vw]"
-          >
-            {site.role.split(" ").map((word, w) => (
-              <span key={w} className="inline-block whitespace-nowrap">
-                {Array.from(word).map((c, i) => (
-                  <span key={i} aria-hidden className="hero-letter inline-block [font-stretch:calc(var(--w,60)*1%)]">
-                    {c}
-                  </span>
-                ))}
-                <span aria-hidden>&nbsp;</span>
-              </span>
-            ))}
+          <p className="hero-in font-display text-[8.5vw] leading-[0.85] font-black uppercase md:max-w-[70%] md:text-[5.2vw]">
+            <ProximityText text={site.role} />
           </p>
           <div className="hero-in flex max-w-xs flex-col gap-2 text-sm md:text-right">
             <p className="opacity-80">{site.tagline}</p>
