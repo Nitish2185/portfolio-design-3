@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { Crosshair } from "@/components/ui/Crosshair";
 import { GridLines } from "@/components/ui/GridLines";
+import { Loader } from "@/components/ui/Loader";
 import "./globals.css";
 
 // Anybody is a variable font with a width axis (50–150%) that we animate
@@ -34,9 +35,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${anybody.variable} ${hanken.variable}`}>
+    <html lang="en" className={`${anybody.variable} ${hanken.variable} is-loading`}>
       <body>
+        <noscript>
+          <style>{`.loader{display:none!important}html.is-loading,html.is-loading body{overflow:auto!important}`}</style>
+        </noscript>
         <SmoothScroll />
+        <Loader />
         <GridLines />
         <Crosshair />
         {children}
