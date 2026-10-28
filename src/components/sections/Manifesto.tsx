@@ -6,7 +6,7 @@ import { about, manifesto, site } from "@/content/site";
 import { BoxButton } from "@/components/ui/BoxButton";
 import { SectionHead } from "@/components/ui/SectionHead";
 
-const chipColors = { blue: "bg-blue", signal: "bg-signal", ink: "bg-ink" };
+const chipColors = { primary: "bg-primary", signal: "bg-signal", ink: "bg-ink" };
 
 /**
  * About section. Giant manifesto lines slide in from alternating sides
@@ -105,7 +105,7 @@ export function Manifesto() {
   );
 
   return (
-    <section ref={root} id="manifesto" data-section="Manifesto" className="relative overflow-hidden bg-snow py-24 text-ink md:py-36">
+    <section ref={root} id="manifesto" data-section="Manifesto" data-tone="light" className="relative overflow-hidden bg-snow py-24 text-ink md:py-36">
       <SectionHead label="Manifesto" note="About — who / why" className="container-x mb-16 md:mb-24" />
 
       <h2 className="mb-24 flex flex-col font-display text-[12vw] leading-[0.88] font-black uppercase md:mb-36 md:text-[9vw]">
@@ -120,7 +120,7 @@ export function Manifesto() {
 
       <div className="container-x grid gap-12 md:grid-cols-12 md:gap-6">
         <figure className="md:col-span-4">
-          <div className="mf-portrait relative aspect-[3/4] overflow-hidden bg-blue">
+          <div className="mf-portrait relative aspect-[3/4] overflow-hidden bg-primary">
             <div
               className="mf-halftone absolute inset-0"
               style={{
@@ -156,7 +156,7 @@ export function Manifesto() {
                 <span className="mf-num" data-value={fact.value}>
                   {fact.value}
                 </span>
-                <span className="text-blue">{fact.suffix}</span>
+                <span className="text-primary">{fact.suffix}</span>
               </dd>
             </div>
           ))}

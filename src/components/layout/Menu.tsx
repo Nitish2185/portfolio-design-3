@@ -27,6 +27,7 @@ export function Menu({ onClose }: { onClose: () => void }) {
     >
       {/* Dark band behind the header */}
       <motion.div
+        data-tone="dark"
         className="h-[72px] shrink-0 bg-ink"
         initial={{ y: "-100%" }}
         animate={{ y: "0%" }}
@@ -37,7 +38,8 @@ export function Menu({ onClose }: { onClose: () => void }) {
         {navLinks.map((link, i) => (
           <motion.li
             key={link.href}
-            className={`relative flex-1 overflow-hidden ${i % 2 ? "bg-blue text-snow" : "bg-snow text-ink"}`}
+            data-tone={i % 2 ? "dark" : "light"}
+            className={`relative flex-1 overflow-hidden ${i % 2 ? "bg-primary text-snow" : "bg-snow text-ink"}`}
             initial={{ x: i % 2 ? "100%" : "-100%" }}
             animate={{ x: "0%" }}
             exit={{ x: i % 2 ? "-100%" : "100%", transition: { duration: 0.45, delay: i * 0.03, ease: EASE } }}
@@ -49,7 +51,7 @@ export function Menu({ onClose }: { onClose: () => void }) {
                 e.preventDefault();
                 go(link.href, link.label);
               }}
-              className="group/stretch container-x flex h-full items-center justify-between gap-4 transition-colors duration-300 hover:bg-signal hover:text-snow"
+              className="group/stretch container-x flex h-full items-center justify-between gap-4 transition-colors duration-300 hover:bg-signal hover:text-ink"
             >
               <span className="font-display text-[clamp(1.75rem,6.5vh,5rem)] leading-none font-black uppercase [--from:70%] [--to:150%]">
                 <Stretch text={link.label} />
@@ -61,6 +63,7 @@ export function Menu({ onClose }: { onClose: () => void }) {
       </ul>
 
       <motion.div
+        data-tone="dark"
         className="container-x flex flex-wrap items-center justify-between gap-4 bg-ink py-4 text-sm text-snow"
         initial={{ y: "100%" }}
         animate={{ y: "0%" }}

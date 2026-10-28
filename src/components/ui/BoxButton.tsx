@@ -5,14 +5,14 @@ type Props = {
   children: ReactNode;
   className?: string;
   download?: boolean;
-  /** "ink" for light backgrounds, "snow" for blue/dark ones */
+  /** "ink" for light backgrounds, "snow" for red/dark ones */
   tone?: "ink" | "snow";
 };
 
 /** Square button: colour sweeps in from the left and the arrow slides through. */
 export function BoxButton({ href, children, className = "", download, tone = "ink" }: Props) {
   const toneClass =
-    tone === "ink" ? "border-ink text-ink hover:text-snow [--fill:var(--color-blue)]" : "border-snow text-snow hover:text-ink [--fill:var(--color-snow)]";
+    tone === "ink" ? "border-ink text-ink hover:text-snow [--fill:var(--color-primary)]" : "border-snow text-snow hover:text-ink [--fill:var(--color-snow)]";
   return (
     <a
       href={href}

@@ -154,7 +154,7 @@ export function ParticleName({ lines, morph, className = "" }: Props) {
         uSize: { value: 30 },
         uPixelRatio: { value: pixelRatio },
         uColor: { value: new THREE.Color("#f4f5f7") },
-        uAccent: { value: new THREE.Color("#ff4a1c") },
+        uAccent: { value: new THREE.Color("#ffd23f") },
       };
       const material = new THREE.ShaderMaterial({ uniforms, vertexShader: vertex, fragmentShader: fragment, transparent: true, depthWrite: false });
       let geometry = new THREE.BufferGeometry();

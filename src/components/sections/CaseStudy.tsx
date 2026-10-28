@@ -43,8 +43,8 @@ function HoldToNext({ next }: { next: Project }) {
   };
 
   return (
-    <section data-section="Next project" className="relative overflow-hidden bg-ink py-24 text-snow md:py-32">
-      <motion.div aria-hidden className="absolute inset-y-0 left-0 bg-blue" style={{ width: fill }} />
+    <section data-section="Next project" data-tone="dark" className="relative overflow-hidden bg-ink py-24 text-snow md:py-32">
+      <motion.div aria-hidden className="absolute inset-y-0 left-0 bg-primary" style={{ width: fill }} />
       <div className="container-x relative flex flex-col items-start gap-10 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="tag mb-4 opacity-60">Next project — {next.kind}</p>
@@ -77,7 +77,7 @@ function HoldToNext({ next }: { next: Project }) {
   );
 }
 
-/** Case-study page: blue title block, sticky info panel and scrolling poster stack. */
+/** Case-study page: red title block, sticky info panel and scrolling poster stack. */
 export function CaseStudy({ project, next }: { project: Project; next: Project }) {
   const root = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -124,7 +124,7 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
 
   return (
     <article ref={root} data-section="Case study" className="relative">
-      <header className="bg-blue pt-28 pb-12 text-snow md:pt-36">
+      <header data-tone="dark" className="bg-primary pt-28 pb-12 text-snow md:pt-36">
         <SectionHead label="Case study" note={`${project.kind} — ${project.year}`} className="container-x mb-10" />
         <h1
           ref={titleRef}
@@ -148,7 +148,7 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
         </dl>
       </header>
 
-      <div className="container-x grid gap-12 bg-snow py-16 text-ink md:grid-cols-12 md:gap-6 md:py-24">
+      <div data-tone="light" className="container-x grid gap-12 bg-snow py-16 text-ink md:grid-cols-12 md:gap-6 md:py-24">
         <aside className="md:col-span-4">
           <div className="flex flex-col gap-8 md:sticky md:top-28">
             <p className="font-display text-2xl leading-tight font-bold md:text-3xl">{project.summary}</p>
@@ -172,13 +172,13 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
           <Poster project={project} variant={gallery[0]} className="cs-shot aspect-[4/3]" />
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <p className="tag mb-3 text-blue">The challenge</p>
+              <p className="tag mb-3 text-primary">The challenge</p>
               <p className="cs-text text-lg leading-relaxed">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
             <div>
-              <p className="tag mb-3 text-blue">The approach</p>
+              <p className="tag mb-3 text-primary">The approach</p>
               <p className="cs-text text-lg leading-relaxed">
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.
               </p>
@@ -191,7 +191,7 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
           <dl className="grid grid-cols-3 gap-4 border-t-2 border-ink pt-6">
             {results.map((r) => (
               <div key={r.label}>
-                <dd className="cs-result font-display text-3xl font-black text-blue md:text-5xl">{r.value}</dd>
+                <dd className="cs-result font-display text-3xl font-black text-primary md:text-5xl">{r.value}</dd>
                 <dt className="tag mt-2 opacity-60">{r.label}</dt>
               </div>
             ))}

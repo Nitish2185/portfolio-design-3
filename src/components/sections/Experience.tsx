@@ -85,7 +85,7 @@ export function Experience() {
   });
 
   return (
-    <section ref={root} id="experience" data-section="Experience" className="relative bg-ink py-24 text-snow md:py-36">
+    <section ref={root} id="experience" data-section="Experience" data-tone="dark" className="relative bg-ink py-24 text-snow md:py-36">
       <SectionHead label="Experience" note="Departures — career log" className="container-x mb-12 md:mb-16" />
 
       <div className="container-x">
@@ -102,7 +102,7 @@ export function Experience() {
               <li
                 key={job.role}
                 onPointerEnter={(e) => flipRow(e.currentTarget)}
-                className="group -mx-2 flex flex-col gap-[0.35em] rounded-sm p-2 transition-colors duration-300 hover:bg-blue/40 md:grid md:grid-cols-[9fr_13fr_12fr_6fr] md:gap-[1.2em]"
+                className="group -mx-2 flex flex-col gap-[0.35em] rounded-sm p-2 transition-colors duration-300 hover:bg-primary/40 md:grid md:grid-cols-[9fr_13fr_12fr_6fr] md:gap-[1.2em]"
               >
                 {COLUMNS.map((c) => (
                   <span key={c.key} className="flex items-center gap-2">

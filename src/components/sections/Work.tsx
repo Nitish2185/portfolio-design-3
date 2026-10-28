@@ -84,7 +84,7 @@ export function Work() {
   );
 
   return (
-    <section ref={root} id="work" data-section="Work" className="relative bg-ink text-snow">
+    <section ref={root} id="work" data-section="Work" data-tone="dark" className="relative bg-ink text-snow">
       <div className="wk-pin relative flex h-svh min-h-[620px] flex-col overflow-hidden pt-24 pb-6">
         <SectionHead label="Selected work" note={`${COUNT} projects — scroll to rotate`} className="container-x" />
 

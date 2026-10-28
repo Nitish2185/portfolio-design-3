@@ -40,7 +40,7 @@ export function Hero() {
   );
 
   return (
-    <section ref={root} id="top" data-section="Index" className="relative h-svh min-h-[600px] overflow-hidden bg-blue text-snow">
+    <section ref={root} id="top" data-section="Index" data-tone="dark" className="relative h-svh min-h-[600px] overflow-hidden bg-primary text-snow">
       <h1 className="sr-only">
         {site.name} — {site.role}
       </h1>

@@ -120,7 +120,7 @@ export function Skills() {
   );
 
   return (
-    <section ref={root} id="skills" data-section="Skills" className="relative overflow-hidden bg-blue py-24 text-snow md:py-36">
+    <section ref={root} id="skills" data-section="Skills" data-tone="dark" className="relative overflow-hidden bg-primary py-24 text-snow md:py-36">
       <SectionHead label="Skills" note="Toolkit — drag the sphere" className="container-x mb-12 md:mb-0" />
 
       <div className="container-x grid items-center gap-10 md:grid-cols-12">

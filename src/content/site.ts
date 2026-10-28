@@ -39,8 +39,8 @@ export const socials = [
 ];
 
 /** Lines of the manifesto: they slide in from alternating sides. `chip` adds a small coloured shape inline. */
-export const manifesto: { text: string; chip?: "blue" | "signal" | "ink" }[] = [
-  { text: "Lorem ipsum", chip: "blue" },
+export const manifesto: { text: string; chip?: "primary" | "signal" | "ink" }[] = [
+  { text: "Lorem ipsum", chip: "primary" },
   { text: "dolor sit amet," },
   { text: "consectetur", chip: "signal" },
   { text: "adipiscing elit" },
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     role: "Lorem direction",
     summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
     tags: ["Lorem", "Ipsum", "Dolor"],
-    colors: ["#1f2bff", "#f4f5f7", "#ff4a1c"],
+    colors: ["#e63312", "#f4f5f7", "#ffd23f"],
     poster: "circle",
   },
   {
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     role: "Ipsum engineering",
     summary: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
     tags: ["Sit", "Amet", "Elit"],
-    colors: ["#ff4a1c", "#0c0c10", "#f4f5f7"],
+    colors: ["#ffd23f", "#0c0c10", "#f4f5f7"],
     poster: "bars",
   },
   {
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     role: "Dolor motion",
     summary: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.",
     tags: ["Tempor", "Magna", "Labore"],
-    colors: ["#0c0c10", "#1f2bff", "#f4f5f7"],
+    colors: ["#0c0c10", "#e63312", "#f4f5f7"],
     poster: "triangle",
   },
   {
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     role: "Amet design",
     summary: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
     tags: ["Aliqua", "Veniam", "Nisi"],
-    colors: ["#f4f5f7", "#0c0c10", "#1f2bff"],
+    colors: ["#f4f5f7", "#0c0c10", "#e63312"],
     poster: "dots",
   },
   {
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     role: "Sit art direction",
     summary: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
     tags: ["Ullamco", "Laboris", "Commodo"],
-    colors: ["#1219c9", "#ff4a1c", "#f4f5f7"],
+    colors: ["#b8240b", "#ffd23f", "#f4f5f7"],
     poster: "split",
   },
   {
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     role: "Elit prototyping",
     summary: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
     tags: ["Minim", "Veniam", "Quis"],
-    colors: ["#ff4a1c", "#f4f5f7", "#1f2bff"],
+    colors: ["#ffd23f", "#f4f5f7", "#e63312"],
     poster: "circle",
   },
 ];

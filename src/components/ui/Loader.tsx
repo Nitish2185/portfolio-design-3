@@ -11,7 +11,7 @@ const ROWS = 6;
 const SEEN_KEY = "intro-seen";
 
 /**
- * Intro: a wall of blue tiles. The name decodes from random characters
+ * Intro: a wall of black tiles. The name decodes from random characters
  * while its letters stretch from narrow to wide and a percentage counts up.
  * Then the tiles collapse outward from the centre to reveal the site.
  */

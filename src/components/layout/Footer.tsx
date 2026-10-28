@@ -85,7 +85,7 @@ export function Footer() {
   const marquee = `Let's make something — ${site.email} — `;
 
   return (
-    <footer ref={root} data-section="Outro" className="relative overflow-hidden bg-ink pt-16 pb-6 text-snow">
+    <footer ref={root} data-section="Outro" data-tone="dark" className="relative overflow-hidden bg-ink pt-16 pb-6 text-snow">
       {/* Giant marquee */}
       <div aria-hidden className="mb-16 overflow-hidden border-y-2 border-snow/15 py-4 md:mb-24">
         <div className="flex w-max animate-marquee">
@@ -144,7 +144,7 @@ export function Footer() {
             type="button"
             onClick={() => scrollToTarget(0, { duration: 2 })}
             aria-label="Back to top"
-            className="group flex size-16 items-center justify-center bg-snow text-ink transition-colors duration-300 hover:bg-signal hover:text-snow"
+            className="group flex size-16 items-center justify-center bg-snow text-ink transition-colors duration-300 hover:bg-signal"
           >
             <span className="text-2xl transition-transform duration-500 ease-snap group-hover:-translate-y-1 group-hover:rotate-[360deg]">↑</span>
           </button>

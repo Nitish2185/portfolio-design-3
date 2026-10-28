@@ -54,7 +54,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" data-section="Contact" className="relative overflow-hidden bg-blue py-24 text-snow md:py-36">
+    <section id="contact" data-section="Contact" data-tone="dark" className="relative overflow-hidden bg-primary py-24 text-snow md:py-36">
       <SectionHead label="Contact" note="Let's talk — reply within 48h" className="container-x mb-10" />
 
       <h2 className="container-x mb-16 font-display text-[22vw] leading-[0.8] font-black uppercase md:mb-24 md:text-[17vw]">
@@ -142,7 +142,7 @@ export function Contact() {
                   <div className="flex items-center gap-6">
                     <button
                       type="submit"
-                      className="group/box relative inline-flex items-center gap-6 overflow-hidden border-2 border-snow px-5 py-4 font-display text-sm font-black uppercase transition-colors duration-500 ease-snap hover:text-blue"
+                      className="group/box relative inline-flex items-center gap-6 overflow-hidden border-2 border-snow px-5 py-4 font-display text-sm font-black uppercase transition-colors duration-500 ease-snap hover:text-primary"
                     >
                       <span aria-hidden className="absolute inset-0 origin-left scale-x-0 bg-snow transition-transform duration-500 ease-snap group-hover/box:scale-x-100" />
                       <span className="relative">{step === steps.length - 1 ? "Send it" : "Next"}</span>

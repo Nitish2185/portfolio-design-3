@@ -1,6 +1,6 @@
 /**
  * Faint Swiss-style column grid fixed behind everything.
- * The blend mode keeps it visible on both blue and white sections.
+ * The blend mode keeps it visible on red, black and white sections.
  */
 export function GridLines() {
   return (

@@ -6,10 +6,10 @@ import { testimonials } from "@/content/site";
 import { SectionHead } from "@/components/ui/SectionHead";
 
 const themes = [
-  "bg-blue text-snow",
-  "bg-ink text-snow",
-  "bg-signal text-ink",
-  "bg-snow text-ink border-2 border-ink",
+  { card: "bg-primary text-snow", mark: "text-primary" },
+  { card: "bg-ink text-snow", mark: "text-ink" },
+  { card: "bg-signal text-ink", mark: "text-signal" },
+  { card: "bg-snow text-ink border-2 border-ink", mark: "text-snow" },
 ];
 
 type CardProps = {
@@ -44,7 +44,7 @@ function Card({ index, depth, flingSignal, onDismiss }: CardProps) {
 
   return (
     <motion.figure
-      className={`absolute inset-0 flex flex-col justify-between p-6 shadow-[0_30px_60px_-30px_rgba(12,12,16,0.5)] md:p-10 ${themes[index % themes.length]} ${
+      className={`absolute inset-0 flex flex-col justify-between p-6 shadow-[0_30px_60px_-30px_rgba(12,12,16,0.5)] md:p-10 ${themes[index % themes.length].card} ${
         isTop ? "cursor-grab active:cursor-grabbing" : "pointer-events-none"
       }`}
       style={{ x, rotate, zIndex: testimonials.length - depth }}
@@ -60,7 +60,7 @@ function Card({ index, depth, flingSignal, onDismiss }: CardProps) {
     >
       <div className="flex items-start justify-between">
         <span aria-hidden className="flex size-14 items-center justify-center bg-current">
-          <span className="font-display text-4xl leading-none font-black mix-blend-difference">“</span>
+          <span className={`font-display text-4xl leading-none font-black ${themes[index % themes.length].mark}`}>“</span>
         </span>
         <motion.span style={{ opacity: hint }} className="tag">
           Next →
@@ -88,7 +88,7 @@ export function Testimonials() {
   const dismiss = () => setOrder((o) => [...o.slice(1), o[0]]);
 
   return (
-    <section id="testimonials" data-section="Testimonials" className="relative overflow-hidden bg-snow py-24 text-ink md:py-36">
+    <section id="testimonials" data-section="Testimonials" data-tone="light" className="relative overflow-hidden bg-snow py-24 text-ink md:py-36">
       <SectionHead label="Testimonials" note="Kind words — swipe the deck" className="container-x mb-12 md:mb-20" />
 
       <div className="container-x grid items-center gap-16 md:grid-cols-12">
@@ -96,7 +96,7 @@ export function Testimonials() {
           <h2 className="font-display text-[14vw] leading-[0.82] font-black uppercase stretch-narrow md:text-[8vw]">
             Kind
             <br />
-            <span className="text-blue">words</span>
+            <span className="text-primary">words</span>
           </h2>
           <p className="mt-6 max-w-sm text-lg text-steel">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Drag the card sideways to see the next one.
@@ -106,7 +106,7 @@ export function Testimonials() {
             onClick={() => setFlingSignal((s) => s + 1)}
             className="group/box relative mt-8 inline-flex items-center gap-6 overflow-hidden border-2 border-ink px-5 py-4 font-display text-sm font-black uppercase transition-colors duration-500 ease-snap hover:text-snow"
           >
-            <span aria-hidden className="absolute inset-0 origin-left scale-x-0 bg-blue transition-transform duration-500 ease-snap group-hover/box:scale-x-100" />
+            <span aria-hidden className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 ease-snap group-hover/box:scale-x-100" />
             <span className="relative">Next testimonial</span>
             <span aria-hidden className="relative">→</span>
           </button>

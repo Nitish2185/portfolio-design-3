@@ -25,7 +25,7 @@ function Equalizer() {
   );
 }
 
-/** Accordion of services: rows sweep blue on hover and expand with Motion. */
+/** Accordion of services: rows sweep red on hover and expand with Motion. */
 export function Services() {
   const root = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(0);
@@ -45,7 +45,7 @@ export function Services() {
   );
 
   return (
-    <section ref={root} id="services" data-section="Services" className="relative bg-snow py-24 text-ink md:py-36">
+    <section ref={root} id="services" data-section="Services" data-tone="light" className="relative bg-snow py-24 text-ink md:py-36">
       <SectionHead label="Services" note={`What I do — ${services.length} disciplines`} className="container-x mb-12 md:mb-20" />
 
       <ul className="sv-list border-t-2 border-ink">
@@ -61,7 +61,7 @@ export function Services() {
               >
                 <span
                   aria-hidden
-                  className={`absolute inset-0 origin-left bg-blue transition-transform duration-500 ease-snap ${
+                  className={`absolute inset-0 origin-left bg-primary transition-transform duration-500 ease-snap ${
                     isOpen ? "scale-x-100" : "scale-x-0 group-hover/stretch:scale-x-100"
                   }`}
                 />
@@ -93,7 +93,7 @@ export function Services() {
                     animate={{ height: "auto" }}
                     exit={{ height: 0 }}
                     transition={{ duration: 0.6, ease: EASE }}
-                    className="overflow-hidden bg-blue text-snow"
+                    className="overflow-hidden bg-primary text-snow"
                   >
                     <motion.div
                       initial={{ y: 40, opacity: 0 }}
