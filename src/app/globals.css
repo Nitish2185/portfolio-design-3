@@ -24,6 +24,12 @@
   }
 }
 
+/* 404 digits: width axis breathes in and out */
+@keyframes breathe {
+  0%, 100% { font-stretch: 50%; }
+  50% { font-stretch: 150%; }
+}
+
 @theme inline {
   --font-display: var(--font-anybody), ui-sans-serif, sans-serif;
   --font-sans: var(--font-hanken), ui-sans-serif, sans-serif;
