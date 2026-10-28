@@ -1,3 +1,4 @@
+import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
 import { Manifesto } from "@/components/sections/Manifesto";
@@ -8,7 +9,7 @@ import { Work } from "@/components/sections/Work";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative bg-snow">
       <Hero />
       <Manifesto />
       <Work />
@@ -16,7 +17,7 @@ export default function Home() {
       <Experience />
       <Skills />
       <Testimonials />
-      <div className="h-[100vh] bg-snow" />
+      <Contact />
     </main>
   );
 }
