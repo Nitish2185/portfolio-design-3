@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Anybody, Hanken_Grotesk } from "next/font/google";
 import { site } from "@/content/site";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { Crosshair } from "@/components/ui/Crosshair";
 import { GridLines } from "@/components/ui/GridLines";
 import "./globals.css";
 
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <SmoothScroll />
         <GridLines />
+        <Crosshair />
         {children}
       </body>
     </html>
