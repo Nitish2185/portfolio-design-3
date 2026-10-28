@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Services } from "@/components/sections/Services";
 import { Skills } from "@/components/sections/Skills";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { Work } from "@/components/sections/Work";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Services />
       <Experience />
       <Skills />
+      <Testimonials />
       <div className="h-[100vh] bg-snow" />
     </main>
   );
