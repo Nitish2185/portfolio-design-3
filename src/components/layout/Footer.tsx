@@ -37,21 +37,32 @@ export function Footer() {
 
   useGSAP(
     () => {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: root.current,
-          start: "top bottom",
-          end: "top 20%",
-          scrub: true,
-          onUpdate: (self) => {
-            const { shown, hidden } = visibleMains();
-            const p = self.progress;
-            gsap.set(shown, { scale: 1 - p * 0.08, borderRadius: p * 40, transformOrigin: "50% 100%", overflow: "hidden" });
-            gsap.set(hidden, { clearProps: "transform,borderRadius,overflow" });
-          },
-          onLeaveBack: () => gsap.set(visibleMains().shown, { clearProps: "transform,borderRadius,overflow" }),
-        },
-      });
+      // Page lift, measured from the footer's live position every frame we scroll,
+      // so it stays right even when the page above changes height
+      let frame = 0;
+      let lifted = false;
+      const update = () => {
+        frame = 0;
+        const footer = root.current;
+        if (!footer) return;
+        const { shown, hidden } = visibleMains();
+        gsap.set(hidden, { clearProps: "transform,borderRadius,overflow" });
+        const top = footer.getBoundingClientRect().top;
+        const p = gsap.utils.clamp(0, 1, (window.innerHeight - top) / (window.innerHeight * 0.8));
+        if (p <= 0) {
+          if (lifted) gsap.set(shown, { clearProps: "transform,borderRadius,overflow" });
+          lifted = false;
+          return;
+        }
+        lifted = true;
+        gsap.set(shown, { scale: 1 - p * 0.08, borderRadius: p * 40, transformOrigin: "50% 100%", overflow: "hidden" });
+      };
+      const onScroll = () => {
+        if (!frame) frame = requestAnimationFrame(update);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      update();
 
       gsap.from(".ft-col", {
         y: 60,
@@ -61,6 +72,12 @@ export function Footer() {
         ease: "expo.out",
         scrollTrigger: { trigger: ".ft-grid", start: "top 90%" },
       });
+
+      return () => {
+        cancelAnimationFrame(frame);
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+      };
     },
     { scope: root },
   );

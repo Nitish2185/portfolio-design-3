@@ -16,7 +16,26 @@ export function SmoothScroll() {
     registerLenis(lenis);
     document.fonts?.ready.then(() => ScrollTrigger.refresh());
 
+    // ScrollTrigger measures positions once; re-measure when the page height
+    // changes (fonts, accordions opening, images loading)
+    let lastHeight = document.body.scrollHeight;
+    let timer = 0;
+    const ro = new ResizeObserver(() => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        const height = document.body.scrollHeight;
+        if (Math.abs(height - lastHeight) > 2) {
+          lastHeight = height;
+          ScrollTrigger.refresh();
+          lastHeight = document.body.scrollHeight;
+        }
+      }, 250);
+    });
+    ro.observe(document.body);
+
     return () => {
+      ro.disconnect();
+      window.clearTimeout(timer);
       gsap.ticker.remove(tick);
       registerLenis(null);
       lenis.destroy();
