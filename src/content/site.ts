@@ -83,7 +83,7 @@ export const projects: Project[] = [
     role: "Lorem direction",
     summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
     tags: ["Lorem", "Ipsum", "Dolor"],
-    colors: ["#e10600", "#f4f5f7", "#ffd23f"],
+    colors: ["#8b0d1f", "#f4f5f7", "#ffd23f"],
     poster: "circle",
   },
   {
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     role: "Dolor motion",
     summary: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.",
     tags: ["Tempor", "Magna", "Labore"],
-    colors: ["#0c0c10", "#e10600", "#f4f5f7"],
+    colors: ["#0c0c10", "#8b0d1f", "#f4f5f7"],
     poster: "triangle",
   },
   {
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     role: "Amet design",
     summary: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
     tags: ["Aliqua", "Veniam", "Nisi"],
-    colors: ["#f4f5f7", "#0c0c10", "#e10600"],
+    colors: ["#f4f5f7", "#0c0c10", "#8b0d1f"],
     poster: "dots",
   },
   {
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     role: "Sit art direction",
     summary: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
     tags: ["Ullamco", "Laboris", "Commodo"],
-    colors: ["#a30400", "#ffd23f", "#f4f5f7"],
+    colors: ["#5e0814", "#ffd23f", "#f4f5f7"],
     poster: "split",
   },
   {
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     role: "Elit prototyping",
     summary: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
     tags: ["Minim", "Veniam", "Quis"],
-    colors: ["#ffd23f", "#f4f5f7", "#e10600"],
+    colors: ["#ffd23f", "#f4f5f7", "#8b0d1f"],
     poster: "circle",
   },
 ];

@@ -1,6 +1,6 @@
 # Lorem Ipsum — Swiss Kinetic Portfolio
 
-A loud, animation-heavy personal portfolio in a **Swiss / kinetic-type** style: Swiss red, white and black with yellow highlights, stretchy variable-font typography, pixel tiles and a crosshair cursor. All text is **lorem ipsum placeholder**.
+A loud, animation-heavy personal portfolio in a **Swiss / kinetic-type** style: deep wine red, white and black with yellow highlights, stretchy variable-font typography, pixel tiles and a crosshair cursor. All text is **lorem ipsum placeholder**.
 
 **Stack:** Next.js 16 (App Router) · React 19 · Tailwind CSS 4 · GSAP (ScrollTrigger, SplitText, ScrambleText) · Motion · Lenis · Three.js
 
