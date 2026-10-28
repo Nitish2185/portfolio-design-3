@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Anybody, Hanken_Grotesk } from "next/font/google";
 import { site } from "@/content/site";
+import { MotionProvider } from "@/components/providers/MotionProvider";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { TransitionProvider } from "@/components/providers/TransitionProvider";
 import { Footer } from "@/components/layout/Footer";
@@ -47,11 +48,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Loader />
         <GridLines />
         <Crosshair />
-        <TransitionProvider>
-          <Nav />
-          {children}
-          <Footer />
-        </TransitionProvider>
+        <MotionProvider>
+          <TransitionProvider>
+            <Nav />
+            {children}
+            <Footer />
+          </TransitionProvider>
+        </MotionProvider>
       </body>
     </html>
   );
