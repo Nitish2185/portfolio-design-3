@@ -35,7 +35,8 @@ export function SectionHead({ label, note, className = "" }: Props) {
       <div className="sh-rule absolute inset-x-0 top-0 h-0.5 origin-left bg-current" />
       <div className="flex items-start justify-between gap-6">
         <span className="tag flex items-center gap-2">
-          <span className="inline-block size-2.5 bg-signal" />
+          {/* Yellow on red/black sections, red on white ones */}
+          <span className="inline-block size-2.5 bg-signal [[data-tone=light]_&]:bg-primary" />
           <span ref={labelRef}>{label.toUpperCase()}</span>
         </span>
         {note && <span className="tag text-right opacity-60">{note}</span>}

@@ -8,6 +8,13 @@ type Props = {
   variant?: Project["poster"];
 };
 
+/** True for dark colours, so text on top can be light (and vice versa). */
+function isDark(hex: string) {
+  const n = parseInt(hex.slice(1), 16);
+  const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  return 0.299 * r + 0.587 * g + 0.114 * b < 150;
+}
+
 /** Generated Swiss-style poster art for a project. Swap for real images later. */
 export function Poster({ project, className = "", bare = false, variant }: Props) {
   const [bg, shape, accent] = project.colors;
@@ -49,14 +56,9 @@ export function Poster({ project, className = "", bare = false, variant }: Props
       )}
 
       {!bare && (
-        <div className="absolute inset-0 flex flex-col justify-between p-[6%]" style={{ color: accent === bg ? shape : accent }}>
-          <span className="tag self-end mix-blend-difference" style={{ color: "#fff" }}>
-            {project.year}
-          </span>
-          <span
-            className="font-display text-[clamp(1.1rem,2.3vw,2.3rem)] leading-none font-black uppercase [font-stretch:125%] mix-blend-difference"
-            style={{ color: "#fff" }}
-          >
+        <div className="absolute inset-0 flex flex-col justify-between p-[6%]" style={{ color: isDark(bg) ? "#f4f5f7" : "#0c0c10" }}>
+          <span className="tag self-end">{project.year}</span>
+          <span className="w-fit px-2 py-1 font-display text-[clamp(1.1rem,2.3vw,2.3rem)] leading-none font-black uppercase [font-stretch:125%]" style={{ background: bg }}>
             {project.title}
           </span>
         </div>

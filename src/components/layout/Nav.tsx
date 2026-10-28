@@ -17,6 +17,7 @@ export function Nav() {
   const sectionRef = useRef<HTMLSpanElement>(null);
   const percentRef = useRef<HTMLSpanElement>(null);
   const current = useRef("");
+  const headerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll();
 
   useMotionValueEvent(scrollYProgress, "change", (p) => {
@@ -39,6 +40,16 @@ export function Nav() {
         current.current = name;
         scramble(sectionRef.current, name.toUpperCase(), 0.5);
       }
+
+      // Black or white text, depending on the section behind the header
+      const header = headerRef.current;
+      if (header && header.dataset.locked !== "true") {
+        const under = document
+          .elementsFromPoint(window.innerWidth / 2, 36)
+          .find((el) => !header.contains(el))
+          ?.closest<HTMLElement>("[data-tone]");
+        header.dataset.tone = under?.dataset.tone ?? "dark";
+      }
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(check);
@@ -56,20 +67,32 @@ export function Nav() {
   useEffect(() => {
     if (!open) return;
     getLenis()?.stop();
+    const header = headerRef.current;
+    if (header) {
+      header.dataset.locked = "true";
+      header.dataset.tone = "dark";
+    }
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
     return () => {
       getLenis()?.start();
       window.removeEventListener("keydown", onKey);
+      if (header) header.dataset.locked = "false";
+      // Re-check the tone once the menu has slid away
+      window.setTimeout(() => window.dispatchEvent(new Event("scroll")), 700);
     };
   }, [open]);
 
   return (
     <>
-      <header className="container-x fixed inset-x-0 top-0 z-[200] grid grid-cols-2 items-start gap-4 py-4 text-white mix-blend-difference md:grid-cols-12">
+      <header
+        ref={headerRef}
+        data-tone="dark"
+        className="container-x fixed inset-x-0 top-0 z-[200] grid grid-cols-2 items-start gap-4 py-4 transition-colors duration-300 data-[tone=dark]:text-snow data-[tone=dark]:[--inv:var(--color-ink)] data-[tone=light]:text-ink data-[tone=light]:[--inv:var(--color-snow)] md:grid-cols-12"
+      >
         <TransitionLink href="/#top" className="flex items-center gap-3 md:col-span-3" aria-label={`${site.name} — home`}>
-          <span className="flex size-10 items-center justify-center bg-white font-display text-sm font-black text-black">
-            {site.initials}
+          <span className="flex size-10 items-center justify-center bg-current font-display text-sm font-black">
+            <span className="text-[var(--inv)]">{site.initials}</span>
           </span>
           <span className="hidden text-sm leading-tight font-semibold sm:block">
             {site.name}
@@ -113,12 +136,12 @@ export function Nav() {
               </AnimatePresence>
             </span>
             <motion.span
-              className="relative block size-10 bg-white"
+              className="relative block size-10 bg-current"
               animate={{ rotate: open ? 135 : 0 }}
               transition={{ type: "spring", stiffness: 260, damping: 16 }}
             >
-              <span className="absolute top-1/2 left-1/2 h-0.5 w-5 -translate-1/2 bg-black" />
-              <span className="absolute top-1/2 left-1/2 h-5 w-0.5 -translate-1/2 bg-black" />
+              <span className="absolute top-1/2 left-1/2 h-0.5 w-5 -translate-1/2 bg-[var(--inv)]" />
+              <span className="absolute top-1/2 left-1/2 h-5 w-0.5 -translate-1/2 bg-[var(--inv)]" />
             </motion.span>
           </button>
         </div>

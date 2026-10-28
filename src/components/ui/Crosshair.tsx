@@ -26,6 +26,7 @@ const brackets = [
  * like a target lock; elements with data-cursor="Text" show a label tag.
  */
 export function Crosshair() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const lineX = useRef<HTMLDivElement>(null);
   const lineY = useRef<HTMLDivElement>(null);
   const box = useRef<HTMLDivElement>(null);
@@ -39,7 +40,8 @@ export function Crosshair() {
     const b = box.current;
     const c = coords.current;
     const t = tag.current;
-    if (!h || !v || !b || !c || !t) return;
+    const root = rootRef.current;
+    if (!h || !v || !b || !c || !t || !root) return;
 
     document.documentElement.classList.add("has-cursor");
     gsap.set([h, v, b, c, t], { autoAlpha: 0 });
@@ -55,6 +57,7 @@ export function Crosshair() {
     let mouseY = 0;
     let target: HTMLElement | null = null;
     let shown = false;
+    let moved = false;
 
     const bX = gsap.quickTo(b, "x", { duration: 0.22, ease: "power3" });
     const bY = gsap.quickTo(b, "y", { duration: 0.22, ease: "power3" });
@@ -64,6 +67,12 @@ export function Crosshair() {
     // Each frame: follow the mouse, or wrap the locked element
     const follow = () => {
       if (!shown) return;
+      // Black or white, depending on the section under the pointer
+      if (moved) {
+        moved = false;
+        const under = document.elementFromPoint(mouseX, mouseY)?.closest<HTMLElement>("[data-tone]");
+        root.dataset.tone = under?.dataset.tone ?? "dark";
+      }
       if (target && document.contains(target)) {
         const r = target.getBoundingClientRect();
         const pad = 8;
@@ -83,6 +92,7 @@ export function Crosshair() {
     const onMove = (e: PointerEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      moved = true;
       if (!shown) {
         shown = true;
         gsap.set(b, { x: mouseX - SIZE / 2, y: mouseY - SIZE / 2 });
@@ -123,7 +133,12 @@ export function Crosshair() {
     const onDown = () => gsap.to(b, { scale: 0.85, duration: 0.15 });
     const onUp = () => gsap.to(b, { scale: 1, duration: 0.3, ease: "back.out(3)" });
 
+    // Scrolling changes what's under a still pointer, so re-check the tone then too
+    const onScroll = () => {
+      moved = true;
+    };
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("pointerover", onOver, { passive: true });
     document.documentElement.addEventListener("pointerleave", onLeave);
     window.addEventListener("pointerdown", onDown);
@@ -133,6 +148,7 @@ export function Crosshair() {
       gsap.ticker.remove(follow);
       document.documentElement.classList.remove("has-cursor");
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("scroll", onScroll);
       document.removeEventListener("pointerover", onOver);
       document.documentElement.removeEventListener("pointerleave", onLeave);
       window.removeEventListener("pointerdown", onDown);
@@ -141,14 +157,19 @@ export function Crosshair() {
   }, []);
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-[300] hidden text-white mix-blend-difference [.has-cursor_&]:block">
-      <div ref={lineX} className="fixed top-0 left-0 h-px w-full bg-white/50" />
-      <div ref={lineY} className="fixed top-0 left-0 h-full w-px bg-white/50" />
+    <div
+      ref={rootRef}
+      aria-hidden
+      data-tone="dark"
+      className="pointer-events-none fixed inset-0 z-[300] hidden transition-colors duration-200 data-[tone=dark]:text-snow data-[tone=light]:text-ink [.has-cursor_&]:block"
+    >
+      <div ref={lineX} className="fixed top-0 left-0 h-px w-full bg-current/40" />
+      <div ref={lineY} className="fixed top-0 left-0 h-full w-px bg-current/40" />
       <div ref={box} className="fixed top-0 left-0 origin-center" style={{ background: brackets, width: SIZE, height: SIZE }} />
       <span ref={coords} className="fixed top-0 left-0 text-[10px] font-semibold tracking-wider whitespace-pre tabular-nums" />
       <span
         ref={tag}
-        className="fixed top-0 left-0 bg-white px-2 py-1 text-[11px] font-bold tracking-widest text-black uppercase"
+        className="fixed top-0 left-0 bg-signal px-2 py-1 text-[11px] font-bold tracking-widest text-ink uppercase"
       />
     </div>
   );
