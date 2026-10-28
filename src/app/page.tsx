@@ -1,3 +1,4 @@
+import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { Services } from "@/components/sections/Services";
@@ -10,6 +11,7 @@ export default function Home() {
       <Manifesto />
       <Work />
       <Services />
+      <Experience />
       <div className="h-[100vh] bg-snow" />
     </main>
   );
