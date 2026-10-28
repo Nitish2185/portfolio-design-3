@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Anybody, Hanken_Grotesk } from "next/font/google";
 import { site } from "@/content/site";
+import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { GridLines } from "@/components/ui/GridLines";
 import "./globals.css";
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${anybody.variable} ${hanken.variable}`}>
       <body>
+        <SmoothScroll />
         <GridLines />
         {children}
       </body>
