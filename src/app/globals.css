@@ -30,15 +30,16 @@
 }
 
 /* ---------- Base ---------- */
+/* Ink behind everything: visible when the page "lifts" away for the footer */
 html {
-  background: var(--color-snow);
+  background: var(--color-ink);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--color-snow);
+  background: var(--color-ink);
   font-family: var(--font-sans);
   overflow-x: clip;
 }

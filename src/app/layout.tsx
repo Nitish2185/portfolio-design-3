@@ -3,6 +3,7 @@ import { Anybody, Hanken_Grotesk } from "next/font/google";
 import { site } from "@/content/site";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { TransitionProvider } from "@/components/providers/TransitionProvider";
+import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
 import { Crosshair } from "@/components/ui/Crosshair";
 import { GridLines } from "@/components/ui/GridLines";
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <TransitionProvider>
           <Nav />
           {children}
+          <Footer />
         </TransitionProvider>
       </body>
     </html>
